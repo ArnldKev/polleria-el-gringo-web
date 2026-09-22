@@ -304,7 +304,7 @@ function submitOrder(event) {
     '',
     `Subtotal: ${money(subtotal)}`,
     ...deliveryLines,
-    `Total: ${money(total)}`,
+    `*TOTAL A PAGAR*: ${money(total)}`,
     `Nombre: ${name}`,
     `Pago: ${payment}`,
   ].join('\n');
