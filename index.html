@@ -302,13 +302,18 @@
 
         <div class="cart-bottom">
           <div class="total">
-            <span>TOTAL A PAGAR</span>
+            <span>TOTAL</span>
             <span id="cartTotal">S/ 0.00</span>
           </div>
 
           <button id="checkoutButton" class="cta checkout" onclick="openCheckout()" disabled>
             Finalizar por WhatsApp
             <i data-lucide="message-circle" size="18"></i>
+          </button>
+
+          <button id="tableOrderButton" class="table-order" type="button" onclick="openTableReceipt()" disabled>
+            <i data-lucide="utensils" size="18"></i>
+            Pedido para mesa
           </button>
         </div>
       </div>
@@ -369,11 +374,51 @@
 
           <div id="orderSummary" class="order-summary"></div>
 
-          <button class="cta" type="submit">
-            Enviar pedido por WhatsApp
+          <button class="receipt-preview" type="button" onclick="openReceiptPreview()">
+            <i data-lucide="receipt-text" size="18"></i>
+            Generar boleta visual
+          </button>
+
+        </form>
+      </div>
+    </section>
+
+    <section id="receiptModal" class="modal receipt-modal" aria-modal="true" role="dialog" aria-labelledby="receiptTitle">
+      <div class="receipt-modal-box">
+        <div class="modal-header">
+          <div>
+            <div class="section-label">Resumen visual</div>
+            <h2 id="receiptTitle">Boleta del pedido</h2>
+          </div>
+
+          <button class="icon-only" type="button" onclick="closeReceiptPreview()" aria-label="Cerrar boleta">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <p id="receiptIntro" class="receipt-intro">Descarga tu boleta antes de continuar a WhatsApp.</p>
+
+        <p id="receiptRule" class="receipt-rule">
+          <i data-lucide="circle-alert" size="18"></i>
+          <span id="receiptRuleText">Los pedidos sin la boleta adjunta no seran atendidos.</span>
+        </p>
+
+        <p id="receiptStatus" class="receipt-status" aria-live="polite"></p>
+
+        <div class="receipt-preview-frame">
+          <img id="receiptImage" alt="Boleta visual del pedido">
+        </div>
+
+        <div class="receipt-actions">
+          <a id="receiptDownload" class="cta receipt-download" href="#" download onclick="markReceiptDownloaded()">
+            <i data-lucide="download" size="18"></i>
+            Descargar boleta
+          </a>
+          <button id="continueWhatsAppButton" class="cta receipt-continue" type="button" onclick="continueToWhatsApp()" disabled>
+            Continuar a WhatsApp
             <img class="wa-icon" src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="">
           </button>
-        </form>
+        </div>
       </div>
     </section>
 
